@@ -1,31 +1,17 @@
 import pandas as pd
-from xgboost import XGBRegressor
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 import joblib
+from data_processor import preprocess   # ✅ changed here
 
-# Load data
 df = pd.read_csv("data/data.csv")
+df = preprocess(df)
 
-# Convert date
-df['date'] = pd.to_datetime(df['date'])
-
-# Create features
-df['day'] = df['date'].dt.day
-df['month'] = df['date'].dt.month
-df['price_diff'] = df['price'] - df['competitor_price']
-
-# Input and output
-X = df[['competitor_price', 'demand', 'day', 'month', 'price_diff']]
+X = df[['product_type','competitor_price','demand','inventory','season']]
 y = df['price']
 
-# Split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = RandomForestRegressor(n_estimators=100)
+model.fit(X, y)
 
-# Train model
-model = XGBRegressor()
-model.fit(X_train, y_train)
-
-# Save model
 joblib.dump(model, "model/model.pkl")
 
 print("Model trained successfully ✅")

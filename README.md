@@ -1,17 +1,34 @@
-# 💰 Dynamic Pricing Engine
+# 💰 Dynamic Pricing Engine (Advanced)
 
-An AI-powered system that predicts optimal product prices based on demand, competitor pricing, and time factors.
+An AI-powered dynamic pricing system that predicts optimal product prices using machine learning and provides real-time recommendations through a web interface.
 
 ---
 
-## 🚀 Features
+## 🚀 Project Overview
 
-* 📊 Machine Learning model (XGBoost)
-* 💡 Smart pricing with business logic
-* 💰 Revenue & Profit calculation
-* 🤖 Price optimization (RL-inspired)
-* 📈 Data visualization
-* 🌐 Streamlit web app
+This project helps businesses automatically determine the best product price based on:
+
+* 📊 Demand
+* 🏷 Competitor Pricing
+* 📦 Inventory Levels
+* 🌦 Seasonal Factors
+
+It also calculates:
+
+* 💰 Revenue
+* 📈 Profit
+* 🤖 Optimized Price (maximum profit)
+
+---
+
+## 🧠 Features
+
+* ✅ Machine Learning Model (Random Forest)
+* ✅ Feature Engineering & Label Encoding
+* ✅ FastAPI Backend (Real-time API)
+* ✅ Streamlit Frontend (Interactive UI)
+* ✅ Profit Optimization Logic
+* ✅ Demand vs Price Visualization (Graph)
 
 ---
 
@@ -20,7 +37,8 @@ An AI-powered system that predicts optimal product prices based on demand, compe
 * Python
 * Pandas
 * Scikit-learn
-* XGBoost
+* FastAPI
+* Uvicorn
 * Streamlit
 * Matplotlib
 
@@ -33,48 +51,71 @@ dynamic_pricing/
 ├── data/
 │   └── data.csv
 ├── model/
+│   └── model.pkl
 ├── train.py
+├── data_processor.py
+├── backend_api.py
 ├── utils.py
-├── app.py
+└── app.py
 
 ---
 
-## ▶️ How to Run
+## ⚙️ How to Run the Project
 
-### 1. Install dependencies
+### 1️⃣ Install Dependencies
 
-pip install pandas scikit-learn xgboost streamlit joblib matplotlib
+pip install pandas scikit-learn fastapi uvicorn streamlit matplotlib joblib
 
-### 2. Train model
+---
+
+### 2️⃣ Train the Model
 
 python train.py
 
-### 3. Run app
+---
+
+### 3️⃣ Run Backend (API)
+
+python -m uvicorn backend_api:app --reload
+
+Open:
+http://127.0.0.1:8000/docs
+
+---
+
+### 4️⃣ Run Frontend (App)
 
 python -m streamlit run app.py
 
 ---
 
-## 🎯 Output
+## 📊 How It Works
 
-User inputs:
+1. Data is preprocessed using label encoding
+2. Random Forest model is trained on pricing data
+3. FastAPI serves predictions via API
+4. Streamlit UI collects user input
+5. Model predicts price and calculates profit
+6. Optimization logic finds best price
+7. Graph shows demand vs price relationship
 
-* Competitor price
-* Demand
-* Cost
-* Date
+---
 
-👉 System predicts:
+## 🎯 Use Cases
 
-* Optimal price
-* Revenue
-* Profit
-* Best optimized price
+* 🛒 E-commerce pricing
+* 🏨 Hotel room pricing
+* ✈️ Airline ticket pricing
+* 🛍 Retail inventory pricing
+
 
 ---
 
 ## 👩‍💻 Author
 
 Your Name
+
+---
+
 
 

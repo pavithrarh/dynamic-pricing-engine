@@ -109,13 +109,6 @@ python -m streamlit run app.py
 * 🛍 Retail inventory pricing
 
 
----
-
-## 👩‍💻 Author
-
-Your Name
-
----
 
 
 
